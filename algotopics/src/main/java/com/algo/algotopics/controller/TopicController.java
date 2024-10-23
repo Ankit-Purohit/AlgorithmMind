@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/topics")
 public class TopicController {
-
     @Autowired
     private TopicsServicesImpl topicsServices;
 
