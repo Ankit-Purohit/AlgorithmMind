@@ -13,10 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/algocourses")
 public class CoursesController {
-
     @Autowired
     private CoursesServiceImpl coursesService;
-
     // adding course by admin
     @PostMapping()
     public ResponseEntity<CoursesDto> createCourse(@RequestBody CoursesDto coursesDto){
@@ -25,7 +23,6 @@ public class CoursesController {
     }
 
     // deleting course by admin
-
     @DeleteMapping("/{courseId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteCourseById(@PathVariable Long courseId) {
