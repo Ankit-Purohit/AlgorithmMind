@@ -1,4 +1,4 @@
-package com.algo.algocourses.ExceptionsHandler;
+package com.algo.algocourses.exceptions;
 
 public class CourseNotFoundException  extends RuntimeException{
     public CourseNotFoundException(String message) {
