@@ -22,6 +22,4 @@ public class Courses {
     private String courseDuration;
     private BigDecimal price;
     private String courseImage;
-
-
 }

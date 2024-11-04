@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: algocourses
+          uri: http://localhost:8080  # Replace with the actual URL and port of the algocourses service
+          predicates:
+            - Path=/algo-courses/**
+          filters:
+            - name: AuthenticationFilter  # Reference to custom filter if registered
+
+        - id: algotopics
+          uri: http://localhost:8081  # Replace with the actual URL and port of the algotopics service
+          predicates:
+            - Path=/topics/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: algousers
+          uri: http://localhost:8082  # Replace with the actual URL and port of the algousers service
+          predicates:
+            - Path=/auth/**
+
+  application:
+    name: algogateway
+
+server:
+  port: 8083
