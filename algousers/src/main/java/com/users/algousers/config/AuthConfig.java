@@ -22,8 +22,6 @@ public class AuthConfig {
     public UserDetailsService userDetailsService(){
         return new CustomUserDetailService();
     }
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()

@@ -16,27 +16,22 @@ import java.util.List;
 @RequestMapping("/algo-courses")
 @Validated
 public class CoursesController {
-
     private final CoursesService coursesService;
-
     public CoursesController(CoursesService coursesService) {
         this.coursesService = coursesService;
     }
-
     // adding course by admin
     @PostMapping
     public ResponseEntity<CoursesDto> createCourse(@Valid @RequestBody CoursesDto coursesDto) {
         CoursesDto savedCourse = coursesService.createCourse(coursesDto);
         return new ResponseEntity<>(savedCourse, HttpStatus.CREATED);
     }
-
     // deleting course by admin
     @DeleteMapping("/{courseId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteCourseById(@PathVariable Long courseId) {
         return coursesService.deleteCourseById(courseId);
     }
-
     // update course by admin
     @PutMapping("/{courseId}")
     public ResponseEntity<CoursesDto> updateCourseById(@NotNull @PathVariable Long courseId,
@@ -49,7 +44,6 @@ public class CoursesController {
     public ResponseEntity<CoursesDto> getCourseById(@PathVariable Long courseId) {
         return new ResponseEntity<>(coursesService.getCourseById(courseId), HttpStatus.OK);
     }
-
     // getting all courses
     @GetMapping()
     public ResponseEntity<List<CoursesDto>> getAllCourses() {

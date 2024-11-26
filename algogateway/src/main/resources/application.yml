@@ -21,6 +21,21 @@ spring:
           predicates:
             - Path=/auth/**
 
+      globalcors:
+        cors-configurations:
+          '[/**]': # Apply CORS settings to all routes
+            allowedOrigins:
+              - "http://localhost:3000" # React app origin
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "PUT"
+              - "DELETE"
+              - "OPTIONS"
+            allowedHeaders:
+              - "*" # Allow all headers
+            allowCredentials: true # Allow sending cookies or credentials
+
   application:
     name: algogateway
 

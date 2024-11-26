@@ -26,12 +26,26 @@ public class AuthService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public String saveUser(AlgoUsersDto algoUsersDto) {
-        AlgoUsers algoUsers=modelMapper.map(algoUsersDto,AlgoUsers.class);
-        algoUsers.setPassword(passwordEncoder.encode(algoUsers.getPassword()));
-        algoUsersRepository.save(algoUsers);
-        return "user added to the system";
-    }
+//    public String saveUser(AlgoUsersDto algoUsersDto) {
+//        AlgoUsers algoUsers=modelMapper.map(algoUsersDto,AlgoUsers.class);
+//        algoUsers.setPassword(passwordEncoder.encode(algoUsers.getPassword()));
+//        algoUsersRepository.save(algoUsers);
+//        return "user added to the system";
+//    }
+public AlgoUsersDto saveUser(AlgoUsersDto algoUsersDto) {
+    // Map the DTO to the entity
+    AlgoUsers algoUsers = modelMapper.map(algoUsersDto, AlgoUsers.class);
+
+    // Encode the password
+    algoUsers.setPassword(passwordEncoder.encode(algoUsers.getPassword()));
+
+    // Save the user to the database
+    AlgoUsers savedUser = algoUsersRepository.save(algoUsers);
+
+    // Map the saved entity back to a DTO to return
+    return modelMapper.map(savedUser, AlgoUsersDto.class);
+}
+
 
     public String generateToken(String username) {
         return jwtService.generateToken(username);
